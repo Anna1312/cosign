@@ -278,10 +278,4 @@ require (
 	sigs.k8s.io/yaml v1.4.0 // indirect
 )
 
-replace (
-	github.com/sigstore/sigstore v1.8.3 => github.com/Anna1312/sigstore v1.8.4-0.20240903055408-3f42367cfb2b
-	github.com/sigstore/sigstore/pkg/signature/kms/aws v1.8.3 => github.com/Anna1312/sigstore/pkg/signature/kms/aws v1.8.4-0.20240903055408-3f42367cfb2b
-	github.com/sigstore/sigstore/pkg/signature/kms/azure v1.8.3 => github.com/Anna1312/sigstore/pkg/signature/kms/azure v1.8.4-0.20240903055408-3f42367cfb2b
-	github.com/sigstore/sigstore/pkg/signature/kms/gcp v1.8.3 => github.com/Anna1312/sigstore/pkg/signature/kms/gcp v1.8.4-0.20240903055408-3f42367cfb2b
-	github.com/sigstore/sigstore/pkg/signature/kms/hashivault v1.8.3 => github.com/Anna1312/sigstore/pkg/signature/kms/hashivault v1.8.4-0.20240903055408-3f42367cfb2b
-)
+replace github.com/sigstore/sigstore v1.8.3 => github.com/Anna1312/sigstore v1.8.3-alpha
