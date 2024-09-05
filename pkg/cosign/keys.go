@@ -147,7 +147,10 @@ func ImportKeyPair(keyPath string, pf PassFunc) (*KeysBytes, error) {
 func marshalKeyPair(ptype string, keypair Keys, pf PassFunc) (key *KeysBytes, err error) {
 	x509Encoded, err := x509.MarshalPKCS8PrivateKey(keypair.private)
 	if err != nil {
-		return nil, fmt.Errorf("x509 encoding private key: %w", err)
+		x509Encoded, err = x5092.MarshalSm2PrivateKey(keypair.private.(*sm2.PrivateKey), nil)
+		if err != nil {
+			return nil, fmt.Errorf("x509 encoding private key: %w", err)
+		}
 	}
 
 	password := []byte{}
