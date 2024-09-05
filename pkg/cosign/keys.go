@@ -27,6 +27,8 @@ import (
 	"encoding/pem"
 	"errors"
 	"fmt"
+	"github.com/tjfoc/gmsm/sm2"
+	x5092 "github.com/tjfoc/gmsm/x509"
 	"os"
 	"path/filepath"
 
@@ -110,7 +112,10 @@ func ImportKeyPair(keyPath string, pf PassFunc) (*KeysBytes, error) {
 	case PrivateKeyPemType:
 		pkcs8Pk, err := x509.ParsePKCS8PrivateKey(p.Bytes)
 		if err != nil {
-			return nil, fmt.Errorf("error parsing pkcs #8 private key")
+			pkcs8Pk, err = x5092.ParsePKCS8PrivateKey(p.Bytes, nil)
+			if err != nil {
+				return nil, fmt.Errorf("error parsing pkcs #8 private key")
+			}
 		}
 		switch k := pkcs8Pk.(type) {
 		case *rsa.PrivateKey:
@@ -126,6 +131,11 @@ func ImportKeyPair(keyPath string, pf PassFunc) (*KeysBytes, error) {
 		case ed25519.PrivateKey:
 			if err = cryptoutils.ValidatePubKey(k.Public()); err != nil {
 				return nil, fmt.Errorf("error validating ed25519 key: %w", err)
+			}
+			pk = k
+		case *sm2.PrivateKey:
+			if err = cryptoutils.ValidatePubKey(k.Public()); err != nil {
+				return nil, fmt.Errorf("error validating sm2 key: %w", err)
 			}
 			pk = k
 		default:
@@ -222,7 +232,10 @@ func LoadPrivateKey(key []byte, pass []byte) (signature.SignerVerifier, error) {
 
 	pk, err := x509.ParsePKCS8PrivateKey(x509Encoded)
 	if err != nil {
-		return nil, fmt.Errorf("parsing private key: %w", err)
+		pk, err = x5092.ParsePKCS8PrivateKey(x509Encoded, nil)
+		if err != nil {
+			return nil, fmt.Errorf("parsing private key: %w", err)
+		}
 	}
 	switch pk := pk.(type) {
 	case *rsa.PrivateKey:
@@ -231,6 +244,9 @@ func LoadPrivateKey(key []byte, pass []byte) (signature.SignerVerifier, error) {
 		return signature.LoadECDSASignerVerifier(pk, crypto.SHA256)
 	case ed25519.PrivateKey:
 		return signature.LoadED25519SignerVerifier(pk)
+	case *sm2.PrivateKey:
+		return signature.LoadGMSM2SignerVerifier(*pk)
+
 	default:
 		return nil, errors.New("unsupported key type")
 	}
