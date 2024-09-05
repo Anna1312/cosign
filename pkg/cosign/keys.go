@@ -134,9 +134,6 @@ func ImportKeyPair(keyPath string, pf PassFunc) (*KeysBytes, error) {
 			}
 			pk = k
 		case *sm2.PrivateKey:
-			if err = cryptoutils.ValidatePubKey(k.Public()); err != nil {
-				return nil, fmt.Errorf("error validating sm2 key: %w", err)
-			}
 			pk = k
 		default:
 			return nil, fmt.Errorf("unexpected private key")
