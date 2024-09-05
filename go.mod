@@ -278,4 +278,4 @@ require (
 	sigs.k8s.io/yaml v1.4.0 // indirect
 )
 
-replace github.com/sigstore/sigstore v1.8.3 => github.com/Anna1312/sigstore v1.8.3-beta3
+replace github.com/sigstore/sigstore v1.8.3 => github.com/Anna1312/sigstore v1.8.3-beta4
