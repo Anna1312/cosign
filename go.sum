@@ -19,8 +19,8 @@ github.com/AdamKorcz/go-fuzz-headers-1 v0.0.0-20230919221257-8b5d3ce2d11d h1:zjq
 github.com/AdamKorcz/go-fuzz-headers-1 v0.0.0-20230919221257-8b5d3ce2d11d/go.mod h1:XNqJ7hv2kY++g8XEHREpi+JqZo3+0l+CH2egBVN4yqM=
 github.com/AliyunContainerService/ack-ram-tool/pkg/credentials/alibabacloudsdkgo/helper v0.2.0 h1:8+4G8JaejP8Xa6W46PzJEwisNgBXMvFcz78N6zG/ARw=
 github.com/AliyunContainerService/ack-ram-tool/pkg/credentials/alibabacloudsdkgo/helper v0.2.0/go.mod h1:GgeIE+1be8Ivm7Sh4RgwI42aTtC9qrcj+Y9Y6CjJhJs=
-github.com/Anna1312/sigstore v1.8.3-beta7 h1:9p344EeCV2ppZ4UJTBNcp7Aer0xuWH+1r51Df7IMuPw=
-github.com/Anna1312/sigstore v1.8.3-beta7/go.mod h1:J6+vPaSmtrHkviAwYzBFJKtW7lZm4eGeuk6Bi5OsqMU=
+github.com/Anna1312/sigstore v1.8.3-beta8 h1:8PNhv5JoR4RMCRdcCwnrEJ8GZ29cPTiUzWpVUKRCUtQ=
+github.com/Anna1312/sigstore v1.8.3-beta8/go.mod h1:J6+vPaSmtrHkviAwYzBFJKtW7lZm4eGeuk6Bi5OsqMU=
 github.com/Azure/azure-sdk-for-go v68.0.0+incompatible h1:fcYLmCpyNYRnvJbPerq7U0hS+6+I79yEDJBqVNcqUzU=
 github.com/Azure/azure-sdk-for-go v68.0.0+incompatible/go.mod h1:9XXNKU+eRnpl9moKnB4QOLf1HestfXbmab5FXxiDBjc=
 github.com/Azure/azure-sdk-for-go/sdk/azcore v1.10.0 h1:n1DH8TPV4qqPTje2RcUBYwtrTWlabVp4n46+74X2pn4=
